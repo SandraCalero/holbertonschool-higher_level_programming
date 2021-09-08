@@ -40,7 +40,7 @@ The following projects are performed here:
 * What’s a traceback
 * What are the arithmetic operators and how to use them
 
-# 0x02. Python - import & modules
+## 0x02. Python - import & modules
 
 ### General
 
