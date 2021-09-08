@@ -199,8 +199,6 @@ guillaume@ubuntu:~/0x02$
 ```
 Remember how you did (or did not) do it in C? #pythoniscool
 
-![Holberton](https://holbertonintranet.s3.amazonaws.com/uploads/medias/2020/9/621c6dd72e1acff708141f3fab6dfa6ff37c5ee6.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIARDDGGGOUWMNL5ANN%2F20210908%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20210908T053008Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=6ebba278ba441956501c7b63b5b0b7ce4b42bef0476cbe1a704c6d6cf9c60c4e)
-
 **Repo:**
 
 * GitHub repository: holbertonschool-higher_level_programming
