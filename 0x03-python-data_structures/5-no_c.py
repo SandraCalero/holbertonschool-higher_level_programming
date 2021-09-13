@@ -3,8 +3,8 @@ def no_c(my_string):
     if my_string is None:
         return None
     new_string = ''
-    for idx in my_string:
-        if idx == 'c' or idx == 'C':
+    for element in my_string:
+        if element == 'c' or element == 'C':
             continue
-        new_string = new_string + idx
+        new_string = new_string + element
     return new_string
