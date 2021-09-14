@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 def add_tuple(tuple_a=(), tuple_b=()):
     aux_tuple_a = list(tuple_a[0:2])
     aux_tuple_b = list(tuple_b[0:2])
