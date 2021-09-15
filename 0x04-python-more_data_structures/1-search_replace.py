@@ -10,6 +10,16 @@ def search_replace(my_list, search, replace):
     elif search <= 0 or search > len(my_list):
         return my_list
     else:
-        new_list = my_list[:]
-        new_list[search - 1] = replace
-        return new_list
+        return[replace if elem == search else elem for elem in my_list]
+
+# The explicit way is (starting on line 13):
+#        new_list = []
+#        for element in my_list:
+#            if element == search:
+#                element = replace
+#            else:
+#                element
+#            new_list.append(element)
+#        return new_list
+#
+# Note: the variable elem correspond to element
