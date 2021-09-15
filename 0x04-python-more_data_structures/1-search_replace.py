@@ -7,7 +7,7 @@ def search_replace(my_list, search, replace):
     - replace: the new element"""
     if my_list is None:
         return None
-    elif search < 0 or search > len(my_list):
+    elif search <= 0 or search > len(my_list):
         return my_list
     else:
         new_list = my_list[:]
