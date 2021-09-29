@@ -32,9 +32,10 @@ class Square:
         return square_area
 
     def my_print(self):
-        """Prints in stdout the square with '#' character"""
+        """Prints a square with '#' character"""
         if self.__size == 0:
             print("")
         else:
+            square_row = '#' * self.__size
             for i in range(0, self.__size):
-                print ("{}".format('#' * self.__size))
+                print("{}".format(square_row))
