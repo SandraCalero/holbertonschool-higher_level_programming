@@ -36,6 +36,5 @@ class Square:
         if self.__size == 0:
             print("")
         else:
-            square_row = '#' * self.__size
             for i in range(0, self.__size):
-                print ("{}".format(square_row))
+                print ("{}".format('#' * self.__size))
