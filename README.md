@@ -121,6 +121,18 @@ The following projects are performed here:
 - How does Python find the attributes of an object or class
 - How to use the getattr function
 
+## 0x07. Python - Test-driven development
+
+### General
+
+- Why Python programming is awesome
+- What’s an interactive test
+- Why tests are important
+- How to write Docstrings to create tests
+- How to write documentation for each module and function
+- What are the basic option flags to create tests
+- How to find edge cases
+
 ## 0x08. Python - More Classes and Objects
 
 ### General
