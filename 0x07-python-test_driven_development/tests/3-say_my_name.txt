@@ -1,0 +1,86 @@
+The ``3-say_my_name.py`` module
+======================
+
+Using ``matrisay_my_name`` function
+------------------------------
+
+Import ``say_my_name`` from the ``3-say_my_name.py`` module:
+
+    >>> say_my_name = __import__('3-say_my_name').say_my_name
+    
+    ------------------
+    Test success cases
+    ------------------
+
+    Correct first and last name
+    ---------------------------
+    >>> say_my_name("Sandra", "Calero")
+    My name is Sandra Calero
+
+    Just first name given
+    ---------------------
+    >>> say_my_name("Sandra")
+    My name is Sandra 
+
+    Empty string passed
+    -------------------
+    >>> say_my_name("")
+    My name is  
+
+    Two empty string passed
+    -----------------------
+    >>> say_my_name("", "")
+    My name is  
+    
+    Last name given and empty string passed
+    --------------------
+    >>> say_my_name("", "Calero")
+    My name is  Calero
+
+    First name and empty string passed
+    >>> say_my_name("Sandra", "")
+    My name is Sandra 
+
+
+    Test pycodestyle
+    ----------------
+    >>> import pycodestyle
+    >>> fchecker = pycodestyle.Checker('3-say_my_name.py', show_source=True)
+    >>> file_errors = fchecker.check_all()
+    >>> 
+
+    ------------
+    Test errors:
+    ------------
+
+    Test correct number of arguments
+    --------------------------------
+    >>> say_my_name("Sandra", "Calero", "Castañeda")
+    Traceback (most recent call last):
+    TypeError: say_my_name() takes from 1 to 2 positional arguments but 3 were given
+
+    Test no arguments
+    -----------------
+    >>> say_my_name()
+    Traceback (most recent call last):
+    TypeError: say_my_name() missing 1 required positional argument: 'first_name'
+
+    Test correct type of first_name
+    -------------------------------
+    >>> say_my_name("Sandra", 30)
+    Traceback (most recent call last):
+    TypeError: last_name must be a string
+
+    >>> say_my_name(None, "Calero")
+    Traceback (most recent call last):
+    TypeError: first_name must be a string
+
+    >>> say_my_name(None, None)
+    Traceback (most recent call last):
+    TypeError: first_name must be a string
+
+    Test correct type of last_name
+    -------------------------------
+    >>> say_my_name(30, "Calero")
+    Traceback (most recent call last):
+    TypeError: first_name must be a string

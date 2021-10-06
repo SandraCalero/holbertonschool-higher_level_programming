@@ -1,0 +1,73 @@
+The ``0-add_integer`` module
+======================
+
+Using ``add_integer`` function
+------------------------------
+
+Import ``add_integer`` from the ``0-add_integer`` module:
+
+    >>> add_integer = __import__('0-add_integer').add_integer
+    
+    Test positive integers
+    ----------------------
+    >>> add_integer(1, 2)
+    3
+
+    Test a negative and positive integer
+    ------------------------------------
+    >>> add_integer(100, -2)
+    98
+
+    Test just one parameter
+    -----------------------
+    >>> add_integer(2)
+    100
+
+    Test if a and b were casted to integers if they are float
+    ---------------------------------------------------------
+    >>> add_integer(100.3, -2)
+    98
+
+    Test two negative numbers
+    -------------------------
+    >>> add_integer(-5, -15)
+    -20
+
+    Test pycodestyle
+    ----------------
+    >>> import pycodestyle
+    >>> fchecker = pycodestyle.Checker('0-add_integer.py', show_source=True)
+    >>> file_errors = fchecker.check_all()
+    >>> 
+
+    ------------
+    Test errors:
+    ------------
+
+    Test a and b must be integers or floats
+    ---------------------------------------
+    >>> add_integer("Hello", -2)
+    Traceback (most recent call last):
+    TypeError: a must be an integer
+
+    >>> add_integer(5, "World")
+    Traceback (most recent call last):
+    TypeError: b must be an integer
+
+    Test no arguments
+    -----------------
+    >>> add_integer()
+    Traceback (most recent call last):
+    TypeError: add_integer() missing 1 required positional argument: 'a'
+
+    Test pased none as argument
+    ---------------------------
+    >>> add_integer(none)
+    Traceback (most recent call last):
+    NameError: name 'none' is not defined
+
+    Test infinitive number
+    ----------------------
+    >>> add_integer(1e309)
+    Traceback (most recent call last):
+    OverflowError: cannot convert float infinity to integer
