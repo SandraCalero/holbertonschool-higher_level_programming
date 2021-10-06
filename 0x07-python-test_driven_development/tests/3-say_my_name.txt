@@ -1,7 +1,7 @@
 The ``3-say_my_name.py`` module
 ======================
 
-Using ``matrisay_my_name`` function
+Using ``say_my_name`` function
 ------------------------------
 
 Import ``say_my_name`` from the ``3-say_my_name.py`` module:

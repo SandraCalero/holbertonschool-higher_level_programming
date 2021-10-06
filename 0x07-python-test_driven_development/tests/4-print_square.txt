@@ -1,0 +1,73 @@
+The ``4-print_square.py`` module
+======================
+
+Using ``print_square`` function
+------------------------------
+
+Import ``print_square`` from the ``4-print_square.py`` module:
+
+    >>> print_square = __import__('4-print_square').print_square
+    
+    ------------------
+    Test success cases
+    ------------------
+
+    Even positive integer is passed
+    -------------------------------
+    >>> print_square(2)
+    ##
+    ##
+
+    Odd positive integer is passed
+    ------------------------------
+    >>> print_square(5)
+    #####
+    #####
+    #####
+    #####
+    #####
+
+    Zero is passed
+    --------------
+    >>> print_square(0)
+    >>> 
+
+    ----------------
+    Test pycodestyle
+    ----------------
+    >>> import pycodestyle
+    >>> fchecker = pycodestyle.Checker('3-say_my_name.py', show_source=True)
+    >>> file_errors = fchecker.check_all()
+    >>> 
+
+    ------------
+    Test errors:
+    ------------
+
+    Test no arguments
+    -----------------
+    >>> print_square()
+    Traceback (most recent call last):
+    TypeError: print_square() missing 1 required positional argument: 'size'
+    
+    Test if size is an integer
+    --------------------------
+    >>> print_square("Hello")
+    Traceback (most recent call last):
+    TypeError: size must be an integer
+
+    >>> print_square(6.7)
+    Traceback (most recent call last):
+    TypeError: size must be an integer
+
+    Test if size is less than 0, raise a ValueError exception with the message size must be >= 0
+    ---------------------------
+    >>> print_square(-8)
+    Traceback (most recent call last):
+    ValueError: size must be >= 0
+    
+    Test if size is a float and is less than 0
+    ------------------------------------------
+    >>> print_square(-8.3)
+    Traceback (most recent call last):
+    TypeError: size must be an integer
