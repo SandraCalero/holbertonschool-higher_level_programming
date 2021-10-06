@@ -28,7 +28,7 @@ def text_indentation(text):
             continue
         else:
             print("{}".format(text[i]), end='')
-            flag = 0          
+            flag = 0
         if text[i] in delimiters:
             print('\n')
             flag = 1

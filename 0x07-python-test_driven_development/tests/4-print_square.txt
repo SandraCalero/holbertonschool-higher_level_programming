@@ -36,7 +36,7 @@ Import ``print_square`` from the ``4-print_square.py`` module:
     Test pycodestyle
     ----------------
     >>> import pycodestyle
-    >>> fchecker = pycodestyle.Checker('3-say_my_name.py', show_source=True)
+    >>> fchecker = pycodestyle.Checker('4-print_square.py', show_source=True)
     >>> file_errors = fchecker.check_all()
     >>> 
 
