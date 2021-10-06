@@ -1,0 +1,168 @@
+The ``5-text_indentation.py`` module
+======================
+
+Using ``text_indentation`` function
+------------------------------
+
+Import ``text_indentation`` from the ``5-text_indentation.py`` module:
+
+    >>> text_indentation = __import__('5-text_indentation').text_indentation
+    
+    ------------------
+    Test success cases
+    ------------------
+    
+    Text ending in a char other than a delimiter
+    --------------------------------------------
+    >>> text_indentation("""The quick, brown fox jumps over a lazy dog. DJs flock by when MTV ax quiz prog: Junk MTV quiz graced? by fox whelps""")
+    The quick, brown fox jumps over a lazy dog.
+    <BLANKLINE>
+    DJs flock by when MTV ax quiz prog:
+    <BLANKLINE>
+    Junk MTV quiz graced?
+    <BLANKLINE>
+    by fox whelps
+    
+    Text ending in a delimiter
+    --------------------------------------------
+    >>> text_indentation("""The quick, brown fox jumps over a lazy dog. DJs flock by when MTV ax quiz prog: Junk MTV quiz graced? by fox whelps?""")
+    The quick, brown fox jumps over a lazy dog.
+    <BLANKLINE>
+    DJs flock by when MTV ax quiz prog:
+    <BLANKLINE>
+    Junk MTV quiz graced?
+    <BLANKLINE>
+    by fox whelps?
+    <BLANKLINE>
+
+    Text starting in spaces
+    -----------------------
+    >>> text_indentation("""   The quick, brown fox jumps over a lazy dog. DJs flock by when MTV ax quiz prog: Junk MTV quiz graced? by fox whelps?""")
+    The quick, brown fox jumps over a lazy dog.
+    <BLANKLINE>
+    DJs flock by when MTV ax quiz prog:
+    <BLANKLINE>
+    Junk MTV quiz graced?
+    <BLANKLINE>
+    by fox whelps?
+    <BLANKLINE>
+
+    Text containing delimiters together
+    -----------------------------------
+    >>> text_indentation("""   The quick, brown fox jumps over a lazy dog.:?... DJs flock by when MTV ax quiz prog: Junk MTV quiz graced? by fox whelps?""")
+    The quick, brown fox jumps over a lazy dog.
+    <BLANKLINE>
+    :
+    <BLANKLINE>
+    ?
+    <BLANKLINE>
+    .
+    <BLANKLINE>
+    .
+    <BLANKLINE>
+    .
+    <BLANKLINE>
+    DJs flock by when MTV ax quiz prog:
+    <BLANKLINE>
+    Junk MTV quiz graced?
+    <BLANKLINE>
+    by fox whelps?
+    <BLANKLINE>
+
+    Text that contains delimiters together, space and more delimiters together.
+    ---------------------------------------------------------------------------
+    >>> text_indentation("""The quick, brown fox jumps over a lazy dog.:?  ... DJs flock by when MTV ax quiz prog: Junk MTV quiz graced? by fox whelps?""")
+    The quick, brown fox jumps over a lazy dog.
+    <BLANKLINE>
+    :
+    <BLANKLINE>
+    ?
+    <BLANKLINE>
+    .
+    <BLANKLINE>
+    .
+    <BLANKLINE>
+    .
+    <BLANKLINE>
+    DJs flock by when MTV ax quiz prog:
+    <BLANKLINE>
+    Junk MTV quiz graced?
+    <BLANKLINE>
+    by fox whelps?
+    <BLANKLINE>
+
+    Text ending in a delimiter and spaces
+    -------------------------------------
+    >>> text_indentation("""The quick, brown fox jumps over a lazy dog.:?  ... DJs flock by when MTV ax quiz prog: Junk MTV quiz graced? by fox whelps?   """)
+    The quick, brown fox jumps over a lazy dog.
+    <BLANKLINE>
+    :
+    <BLANKLINE>
+    ?
+    <BLANKLINE>
+    .
+    <BLANKLINE>
+    .
+    <BLANKLINE>
+    .
+    <BLANKLINE>
+    DJs flock by when MTV ax quiz prog:
+    <BLANKLINE>
+    Junk MTV quiz graced?
+    <BLANKLINE>
+    by fox whelps?
+    <BLANKLINE>
+
+    Text ending in a char other than a delimiter and spaces
+    -------------------------------------------------------
+    >>> text_indentation("""The quick, brown fox jumps over a lazy dog.:?  ... DJs flock by when MTV ax quiz prog: Junk MTV quiz graced? by fox whelps   """)
+    The quick, brown fox jumps over a lazy dog.
+    <BLANKLINE>
+    :
+    <BLANKLINE>
+    ?
+    <BLANKLINE>
+    .
+    <BLANKLINE>
+    .
+    <BLANKLINE>
+    .
+    <BLANKLINE>
+    DJs flock by when MTV ax quiz prog:
+    <BLANKLINE>
+    Junk MTV quiz graced?
+    <BLANKLINE>
+    by fox whelps   
+
+    Simple string without delimiters
+    --------------------------------
+    >>> text_indentation("Hello world!")
+    Hello world!
+
+    ----------------
+    Test pycodestyle
+    ----------------
+    >>> import pycodestyle
+    >>> fchecker = pycodestyle.Checker('3-say_my_name.py', show_source=True)
+    >>> file_errors = fchecker.check_all()
+    >>> 
+
+    ------------
+    Test errors:
+    ------------
+
+    Test if text is a string
+    ------------------------
+    >>> text_indentation(1024)
+    Traceback (most recent call last):
+    TypeError: text must be a string
+
+    >>> text_indentation(["Hello"])
+    Traceback (most recent call last):
+    TypeError: text must be a string
+
+    Test no argument
+    ----------------
+    >>> text_indentation()
+    Traceback (most recent call last):
+    TypeError: text_indentation() missing 1 required positional argument: 'text'
