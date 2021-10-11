@@ -1,0 +1,49 @@
+The ``1-my_list.py`` module
+======================
+
+Using ``print_sorted`` function from MyList Class 
+------------------------------
+
+Import ``MyList`` from the ``1-my_list.py`` module:
+
+    >>> MyList = __import__('1-my_list').MyList
+    
+    ------------------
+    Test success cases
+    ------------------
+    
+    Test positive numbers
+    ---------------------
+    >>> my_list = MyList()
+    >>> my_list.append(1)
+    >>> my_list.append(4)
+    >>> my_list.append(2)
+    >>> my_list.append(3)
+    >>> print(my_list)
+    [1, 4, 2, 3]
+    >>> my_list.print_sorted()
+    [1, 2, 3, 4]
+    >>> print(my_list)
+    [1, 4, 2, 3]
+
+    Test negative numbers
+    ---------------------
+    >>> my_list3 = MyList()
+    >>> my_list3.append(-2)
+    >>> my_list3.append(-5)
+    >>> my_list3.append(1024)
+    >>> my_list3.print_sorted()
+    [-5, -2, 1024]
+
+    Empty list
+    --------------------
+    >>> my_list2 = MyList()
+    >>> my_list2.print_sorted()
+    []
+
+    Test pycodestyle
+    ----------------
+    >>> import pycodestyle
+    >>> fchecker = pycodestyle.Checker('1-my_list.py', show_source=True)
+    >>> file_errors = fchecker.check_all()
+    >>> 
