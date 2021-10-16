@@ -12,6 +12,7 @@ class Rectangle(Base):
     Args:
         Base ([base]): Super class
     """
+
     def __init__(self, width, height, x=0, y=0, id=None):
         """Constructor
 
@@ -92,3 +93,10 @@ class Rectangle(Base):
         drawn_rectangle = '#' * self.__width
         for row in range(0, self.__height):
             print(drawn_rectangle)
+
+    def __str__(self):
+        return "[Rectangle] ({:d}) {:d}/{:d} - {:d}/{:d}".format(self.id,
+                                                                 self.__x,
+                                                                 self.__y,
+                                                                 self.__width,
+                                                                 self.__height)
