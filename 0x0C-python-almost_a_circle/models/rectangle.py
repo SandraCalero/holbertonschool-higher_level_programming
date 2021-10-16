@@ -90,7 +90,10 @@ class Rectangle(Base):
         return self.__width * self.__height
 
     def display(self):
-        drawn_rectangle = '#' * self.__width
+        space = ' ' * self.__x
+        drawn_rectangle = space + ('#' * self.__width)
+        for line in range(0, self.__y):
+            print()
         for row in range(0, self.__height):
             print(drawn_rectangle)
 
