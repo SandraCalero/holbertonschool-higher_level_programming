@@ -8,10 +8,10 @@ class Base:
     __nb_objects = 0
 
     def __init__(self, id=None):
-        """Constructor of instances
+        """Constructor of instances of Base class
 
         Args:
-            id (int): identification number of each instance.
+            id (int): Identification number of each instance.
             Defaults to None.
         """
         if id is not None:

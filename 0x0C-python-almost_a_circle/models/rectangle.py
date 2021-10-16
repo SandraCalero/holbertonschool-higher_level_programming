@@ -14,14 +14,14 @@ class Rectangle(Base):
     """
 
     def __init__(self, width, height, x=0, y=0, id=None):
-        """Constructor
+        """Constructor of instanses of Rectangle class
 
         Args:
             width (int): The width of the rectangle
             height (int): The height of the rectangle
-            x (int): [description]. Defaults to 0.
-            y (int): [description]. Defaults to 0.
-            id (int): [description]. Defaults to None.
+            x (int): Horizontal location of the rectangle. Defaults to 0.
+            y (int): Vertical location of the rectangle. Defaults to 0.
+            id (int): Identification number of each instance. Defaults to None.
         """
         super().__init__(id)
         self.width = width
@@ -87,9 +87,12 @@ class Rectangle(Base):
         self.__y = value
 
     def area(self):
+        """Returns the area value of the Rectangle instance"""
         return self.__width * self.__height
 
     def display(self):
+        """Prints in stdout the Rectangle instance with the character #
+        by taking care of x and y"""
         space = ' ' * self.__x
         drawn_rectangle = space + ('#' * self.__width)
         for line in range(0, self.__y):
@@ -98,8 +101,14 @@ class Rectangle(Base):
             print(drawn_rectangle)
 
     def __str__(self):
+        """Returns [Rectangle] (<id>) <x>/<y> - <width>/<height>"""
         return "[Rectangle] ({:d}) {:d}/{:d} - {:d}/{:d}".format(self.id,
                                                                  self.__x,
                                                                  self.__y,
                                                                  self.__width,
                                                                  self.__height)
+
+    def update(self, *args):
+        """Assigns an argument to each attribute"""
+        for arg in args:
+            arg[0] = 
