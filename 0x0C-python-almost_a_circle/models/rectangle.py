@@ -128,3 +128,7 @@ class Rectangle(Base):
         else:
             for key, value in kwargs.items():
                 setattr(self, key, value)
+
+    def to_dictionary(self):
+        list_key = ["id", "width", "height", "x", "y"]
+        return {key: getattr(self, key) for key in list_key}
