@@ -41,3 +41,23 @@ class Square(Rectangle):
         """Returns [Square] (<id>) <x>/<y> - <size>"""
         return "[Square] ({:d}) {:d}/{:d} - {:d}".format(self.id, self.x,
                                                          self.y, self.width)
+
+    def update(self, *args, **kwargs):
+        """Assigns an argument to each attribute"""
+        if len(args) > 0:
+            list_values = []
+            list_key = ["id", "size", "x", "y"]
+            dictionary = {"id": self.id, "size": self.width,
+                          "x": self.x, "y": self.y}
+            for num in args:
+                list_values.append(num)
+            size_list = len(list_values)
+            i = 0
+            while i < size_list:
+                dictionary[list_key[i]] = list_values[i]
+                i += 1
+            for key, value in dictionary.items():
+                setattr(self, key, value)
+        else:
+            for key, value in kwargs.items():
+                setattr(self, key, value)
