@@ -134,12 +134,14 @@ class TestSquare(unittest.TestCase):
 
     def test_save_to_file(self):
         """Test write the JSON string representation of list_objs to a file"""
+        json_content = '[{"id": 2, "size": 10, "x": 2, "y": 8}]'
+        filename_expected = "Square.json"
         s9 = Square(10, 2, 8, 2)
-        output_expected = '[{"id": 2, "size": 10, "x": 2, "y": 8}]'
         Square.save_to_file([s9])
         with open("Square.json", "r") as file:
             output = file.read()
-        self.assertEqual(output, output_expected)
+        self.assertEqual(output, json_content)
+        self.assertEqual(file.name, filename_expected)
 
 
 if __name__ == "__main__":

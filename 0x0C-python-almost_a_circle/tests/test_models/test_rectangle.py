@@ -4,6 +4,7 @@
 import unittest
 import io
 import unittest.mock
+import json
 from models.rectangle import Rectangle
 from models.base import Base
 
@@ -138,12 +139,14 @@ class TestRectangle(unittest.TestCase):
 
     def test_save_to_file(self):
         """Test write the JSON string representation of list_objs to a file"""
+        json_content = '[{"id": 2, "width": 10, "height": 7, "x": 2, "y": 8}]'
+        filename_expected = "Rectangle.json"
         r9 = Rectangle(10, 7, 2, 8, 2)
-        output_expect = '[{"id": 2, "width": 10, "height": 7, "x": 2, "y": 8}]'
         Rectangle.save_to_file([r9])
         with open("Rectangle.json", "r") as file:
             output = file.read()
-        self.assertEqual(output, output_expect)
+        self.assertEqual(output, json_content)
+        self.assertEqual(file.name, filename_expected)
 
 
 if __name__ == "__main__":
