@@ -2,6 +2,8 @@
 """Unittest for class Rectangle
 """
 import unittest
+import io
+import unittest.mock
 from models.rectangle import Rectangle
 
 
@@ -11,6 +13,9 @@ class TestRectangle(unittest.TestCase):
     def setUp(self):
         """Creates the instance that can be used in the following tests"""
         self.r1 = Rectangle(10, 2, 0, 0, 12)
+
+    def test_isinstance(self):
+        self.assertIsInstance(self.r1, Rectangle)
 
     def test_id(self):
         """Test id of Rectangle r1"""
@@ -73,8 +78,47 @@ class TestRectangle(unittest.TestCase):
             Rectangle(10, 2, 1, -3)
 
     def test_area(self):
-        r2 = Rectangle(6, 5)
+        """Test the area"""
+        r2 = Rectangle(6, 5, 8, 25)
         self.assertEqual(r2.area(), 30)
+
+    def test_display_not_None(self):
+        """Test if rectangle is not None"""
+        r3 = Rectangle(2, 5)
+        self.assertIsNotNone(r3.display)
+
+    def test_display(self):
+        """Test print in stdout the Rectangle instance with the character #"""
+        output = "##\n"
+        with unittest.mock.patch('sys.stdout', new=io.StringIO()) as _out:
+            r4 = Rectangle(2, 1)
+            r4.display()
+            self.assertEqual(_out.getvalue(), output)
+
+    def test_str_method(self):
+        """Test __str__ method in stdout"""
+        output = "[Rectangle] (12) 2/1 - 4/6\n"
+        with unittest.mock.patch('sys.stdout', new=io.StringIO()) as fake_out:
+            print(Rectangle(4, 6, 2, 1, 12))
+            self.assertEqual(fake_out.getvalue(), output)
+
+    def test_displayXY(self):
+        """Test print in stdout the Rectangle instance
+        with the character # by taking care of x and y"""
+        output = "\n\n  ##\n  ##\n  ##\n"
+        with unittest.mock.patch('sys.stdout', new=io.StringIO()) as fake_out:
+            r5 = Rectangle(2, 3, 2, 2)
+            r5.display()
+            self.assertEqual(fake_out.getvalue(), output)
+
+    def test_update(self):
+        """Test assigns a key/value argument to attributes"""
+        output = "[Rectangle] (89) 10/10 - 10/10\n"
+        r6 = Rectangle(10, 10, 10, 10)
+        with unittest.mock.patch('sys.stdout', new=io.StringIO()) as fake_out:
+            r6.update(89)
+            print(r6)
+            self.assertEqual(fake_out.getvalue(), output)
 
 
 if __name__ == "__main__":
