@@ -15,6 +15,7 @@ class TestRectangle(unittest.TestCase):
         self.r1 = Rectangle(10, 2, 0, 0, 12)
 
     def test_isinstance(self):
+        """Test if is an instance of class Rectangle"""
         self.assertIsInstance(self.r1, Rectangle)
 
     def test_id(self):
