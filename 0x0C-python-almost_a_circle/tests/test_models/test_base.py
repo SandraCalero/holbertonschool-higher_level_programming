@@ -2,12 +2,14 @@
 """Unittest for class Base
 """
 import unittest
+import pycodestyle
 from models.base import Base
 
 
 class TestBase(unittest.TestCase):
     """Class to test the class Base
     """
+
     def test_id_None(self):
         """Test if id is None"""
         b1 = Base()
@@ -28,6 +30,13 @@ class TestBase(unittest.TestCase):
     def test_is_isntance(self):
         b5 = Base(5)
         self.assertIsInstance(b5, Base)
+
+    def test_pycodestyle(self):
+        """Test pycodestyle."""
+        style = pycodestyle.StyleGuide(quiet=True)
+        result = style.check_files(['models/base.py'])
+        self.assertEqual(result.total_errors, 0,
+                         "Found code style errors (and warnings).")
 
 
 if __name__ == "__main__":

@@ -4,6 +4,7 @@
 import unittest
 import io
 import unittest.mock
+import pycodestyle
 from models.square import Square
 from models.base import Base
 
@@ -142,6 +143,13 @@ class TestSquare(unittest.TestCase):
             output = file.read()
         self.assertEqual(output, json_content)
         self.assertEqual(file.name, filename_expected)
+
+    def test_pycodestyle(self):
+        """Test pycodestyle."""
+        style = pycodestyle.StyleGuide(quiet=True)
+        result = style.check_files(['models/square.py'])
+        self.assertEqual(result.total_errors, 0,
+                         "Found code style errors (and warnings).")
 
 
 if __name__ == "__main__":

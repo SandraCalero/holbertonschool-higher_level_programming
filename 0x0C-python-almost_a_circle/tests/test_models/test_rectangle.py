@@ -4,7 +4,7 @@
 import unittest
 import io
 import unittest.mock
-import json
+import pycodestyle
 from models.rectangle import Rectangle
 from models.base import Base
 
@@ -147,6 +147,13 @@ class TestRectangle(unittest.TestCase):
             output = file.read()
         self.assertEqual(output, json_content)
         self.assertEqual(file.name, filename_expected)
+
+    def test_pycodestyle(self):
+        """Test pycodestyle."""
+        style = pycodestyle.StyleGuide(quiet=True)
+        result = style.check_files(['models/rectangle.py'])
+        self.assertEqual(result.total_errors, 0,
+                         "Found code style errors (and warnings).")
 
 
 if __name__ == "__main__":
