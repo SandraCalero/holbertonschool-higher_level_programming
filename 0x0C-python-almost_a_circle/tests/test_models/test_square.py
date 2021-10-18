@@ -126,10 +126,20 @@ class TestSquare(unittest.TestCase):
                          'id': 1, 'size': 10, 'x': 2, 'y': 1})
 
     def test_to_json_string(self):
+        """Test return of a JSON string representation of list_dictionaries"""
         s8 = Square(10, 7, 8, 1)
         dictionary = s8.to_dictionary()
         self.assertEqual(Base.to_json_string(
             [dictionary]), '[{"id": 1, "size": 10, "x": 7, "y": 8}]')
+
+    def test_save_to_file(self):
+        """Test write the JSON string representation of list_objs to a file"""
+        s9 = Square(10, 2, 8, 2)
+        output_expected = '[{"id": 2, "size": 10, "x": 2, "y": 8}]'
+        Square.save_to_file([s9])
+        with open("Square.json", "r") as file:
+            output = file.read()
+        self.assertEqual(output, output_expected)
 
 
 if __name__ == "__main__":

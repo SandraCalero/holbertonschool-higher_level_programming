@@ -130,10 +130,20 @@ class TestRectangle(unittest.TestCase):
                          'id': 15, 'width': 10, 'height': 2, 'x': 1, 'y': 9})
 
     def test_to_json_string(self):
+        """Test return of a JSON string representation of list_dictionaries"""
         r8 = Rectangle(10, 7, 2, 8, 1)
         dictio = r8.to_dictionary()
         self.assertEqual(Base.to_json_string(
             [dictio]), '[{"id": 1, "width": 10, "height": 7, "x": 2, "y": 8}]')
+
+    def test_save_to_file(self):
+        """Test write the JSON string representation of list_objs to a file"""
+        r9 = Rectangle(10, 7, 2, 8, 2)
+        output_expect = '[{"id": 2, "width": 10, "height": 7, "x": 2, "y": 8}]'
+        Rectangle.save_to_file([r9])
+        with open("Rectangle.json", "r") as file:
+            output = file.read()
+        self.assertEqual(output, output_expect)
 
 
 if __name__ == "__main__":
