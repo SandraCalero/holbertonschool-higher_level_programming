@@ -5,6 +5,7 @@ import unittest
 import io
 import unittest.mock
 from models.square import Square
+from models.base import Base
 
 
 class TestSquare(unittest.TestCase):
@@ -123,6 +124,12 @@ class TestSquare(unittest.TestCase):
         s7 = Square(10, 2, 1, 1)
         self.assertEqual(s7.to_dictionary(), {
                          'id': 1, 'size': 10, 'x': 2, 'y': 1})
+
+    def test_to_json_string(self):
+        s8 = Square(10, 7, 8, 1)
+        dictionary = s8.to_dictionary()
+        self.assertEqual(Base.to_json_string(
+            [dictionary]), '[{"id": 1, "size": 10, "x": 7, "y": 8}]')
 
 
 if __name__ == "__main__":

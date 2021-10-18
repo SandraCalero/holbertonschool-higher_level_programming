@@ -5,6 +5,7 @@ import unittest
 import io
 import unittest.mock
 from models.rectangle import Rectangle
+from models.base import Base
 
 
 class TestRectangle(unittest.TestCase):
@@ -127,6 +128,12 @@ class TestRectangle(unittest.TestCase):
         r7 = Rectangle(10, 2, 1, 9, 15)
         self.assertEqual(r7.to_dictionary(), {
                          'id': 15, 'width': 10, 'height': 2, 'x': 1, 'y': 9})
+
+    def test_to_json_string(self):
+        r8 = Rectangle(10, 7, 2, 8, 1)
+        dictio = r8.to_dictionary()
+        self.assertEqual(Base.to_json_string(
+            [dictio]), '[{"id": 1, "width": 10, "height": 7, "x": 2, "y": 8}]')
 
 
 if __name__ == "__main__":
