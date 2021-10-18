@@ -10,6 +10,7 @@ from models.square import Square
 class TestSquare(unittest.TestCase):
     """Class to test the class Square
     """
+
     def setUp(self):
         """Creates the instance that can be used in the following tests"""
         self.s1 = Square(10, 0, 0, 12)
@@ -95,27 +96,33 @@ class TestSquare(unittest.TestCase):
     def test_str_method(self):
         """Test __str__ method in stdout"""
         output = "[Square] (12) 2/1 - 4\n"
-        with unittest.mock.patch('sys.stdout', new=io.StringIO()) as fake_out:
+        with unittest.mock.patch('sys.stdout', new=io.StringIO()) as _out:
             print(Square(4, 2, 1, 12))
-            self.assertEqual(fake_out.getvalue(), output)
+            self.assertEqual(_out.getvalue(), output)
 
     def test_displayXY(self):
         """Test print in stdout the Square instance
         with the character # by taking care of x and y"""
         output = "\n\n  ##\n  ##\n"
-        with unittest.mock.patch('sys.stdout', new=io.StringIO()) as fake_out:
+        with unittest.mock.patch('sys.stdout', new=io.StringIO()) as _out:
             s5 = Square(2, 2, 2)
             s5.display()
-            self.assertEqual(fake_out.getvalue(), output)
+            self.assertEqual(_out.getvalue(), output)
 
     def test_update(self):
         """Test assigns a key/value argument to attributes"""
         output = "[Square] (10) 0/0 - 5\n"
         s6 = Square(5)
-        with unittest.mock.patch('sys.stdout', new=io.StringIO()) as fake_out:
+        with unittest.mock.patch('sys.stdout', new=io.StringIO()) as _out:
             s6.update(10)
             print(s6)
-            self.assertEqual(fake_out.getvalue(), output)
+            self.assertEqual(_out.getvalue(), output)
+
+    def test_to_dictionary(self):
+        """Test return of the dictionary representation of a Square"""
+        s7 = Square(10, 2, 1, 1)
+        self.assertEqual(s7.to_dictionary(), {
+                         'id': 1, 'size': 10, 'x': 2, 'y': 1})
 
 
 if __name__ == "__main__":

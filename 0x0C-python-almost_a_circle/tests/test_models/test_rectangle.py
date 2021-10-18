@@ -10,6 +10,7 @@ from models.rectangle import Rectangle
 class TestRectangle(unittest.TestCase):
     """Class to test the class Rectangle
     """
+
     def setUp(self):
         """Creates the instance that can be used in the following tests"""
         self.r1 = Rectangle(10, 2, 0, 0, 12)
@@ -99,27 +100,33 @@ class TestRectangle(unittest.TestCase):
     def test_str_method(self):
         """Test __str__ method in stdout"""
         output = "[Rectangle] (12) 2/1 - 4/6\n"
-        with unittest.mock.patch('sys.stdout', new=io.StringIO()) as fake_out:
+        with unittest.mock.patch('sys.stdout', new=io.StringIO()) as _out:
             print(Rectangle(4, 6, 2, 1, 12))
-            self.assertEqual(fake_out.getvalue(), output)
+            self.assertEqual(_out.getvalue(), output)
 
     def test_displayXY(self):
         """Test print in stdout the Rectangle instance
         with the character # by taking care of x and y"""
         output = "\n\n  ##\n  ##\n  ##\n"
-        with unittest.mock.patch('sys.stdout', new=io.StringIO()) as fake_out:
+        with unittest.mock.patch('sys.stdout', new=io.StringIO()) as _out:
             r5 = Rectangle(2, 3, 2, 2)
             r5.display()
-            self.assertEqual(fake_out.getvalue(), output)
+            self.assertEqual(_out.getvalue(), output)
 
     def test_update(self):
         """Test assigns a key/value argument to attributes"""
         output = "[Rectangle] (89) 10/10 - 10/10\n"
         r6 = Rectangle(10, 10, 10, 10)
-        with unittest.mock.patch('sys.stdout', new=io.StringIO()) as fake_out:
+        with unittest.mock.patch('sys.stdout', new=io.StringIO()) as _out:
             r6.update(89)
             print(r6)
-            self.assertEqual(fake_out.getvalue(), output)
+            self.assertEqual(_out.getvalue(), output)
+
+    def test_to_dictionary(self):
+        """Test return of the dictionary representation of a Rectangle"""
+        r7 = Rectangle(10, 2, 1, 9, 15)
+        self.assertEqual(r7.to_dictionary(), {
+                         'id': 15, 'width': 10, 'height': 2, 'x': 1, 'y': 9})
 
 
 if __name__ == "__main__":
