@@ -25,6 +25,10 @@ class TestBase(unittest.TestCase):
         b4 = Base(-6)
         self.assertEqual(b4.id, -6)
 
+    def test_is_isntance(self):
+        b5 = Base(5)
+        self.assertIsInstance(b5, Base)
+
 
 if __name__ == "__main__":
     unittest.main()
