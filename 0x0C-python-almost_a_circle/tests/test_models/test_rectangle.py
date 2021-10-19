@@ -157,6 +157,20 @@ class TestRectangle(unittest.TestCase):
         self.assertIsInstance(output, str)
         os.remove(path + "/" + filename_expected)
 
+    def test_save_to_file_None(self):
+        """Test save_to_file methot if list_objs is None"""
+        json_content = '[]'
+        filename_expected = "Rectangle.json"
+        Rectangle.save_to_file(None)
+        path = os.getcwd()
+        self.assertTrue(os.path.isfile(path + "/" + filename_expected))
+        with open("Rectangle.json", "r") as file:
+            output = file.read()
+        self.assertEqual(output, json_content)
+        self.assertEqual(file.name, filename_expected)
+        self.assertIsInstance(output, str)
+        os.remove(path + "/" + filename_expected)
+
     def test_from_json_string(self):
         """Test return of a list of the JSON string
         representation json_string"""
@@ -173,6 +187,16 @@ class TestRectangle(unittest.TestCase):
         representation json_string None"""
         self.assertEqual(Rectangle.from_json_string(None), [])
         self.assertIsNotNone(Rectangle.from_json_string(None))
+
+    def test_from_json_string_emptyList(self):
+        """Test return of a list of the JSON string
+        representation json_string empty"""
+        list_input = []
+        json_list_input = Rectangle.to_json_string(list_input)
+        self.assertEqual(Rectangle.from_json_string(
+            json_list_input), list_input)
+        self.assertIsInstance(
+            Rectangle.from_json_string(json_list_input), list)
 
     def test_create(self):
         """Test return of an instance with all attributes already set"""

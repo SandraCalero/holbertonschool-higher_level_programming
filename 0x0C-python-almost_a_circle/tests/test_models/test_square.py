@@ -84,7 +84,7 @@ class TestSquare(unittest.TestCase):
         self.assertEqual(s2.area(), 36)
 
     def test_display_not_None(self):
-        """Test if rectangle is not None"""
+        """Test if Square is not None"""
         s3 = Square(2, 5)
         self.assertIsNotNone(s3.display)
 
@@ -153,6 +153,20 @@ class TestSquare(unittest.TestCase):
         self.assertIsInstance(output, str)
         os.remove(path + "/" + filename_expected)
 
+    def test_save_to_file_None(self):
+        """Test save_to_file methot if list_objs is None"""
+        json_content = '[]'
+        filename_expected = "Square.json"
+        Square.save_to_file(None)
+        path = os.getcwd()
+        self.assertTrue(os.path.isfile(path + "/" + filename_expected))
+        with open("Square.json", "r") as file:
+            output = file.read()
+        self.assertEqual(output, json_content)
+        self.assertEqual(file.name, filename_expected)
+        self.assertIsInstance(output, str)
+        os.remove(path + "/" + filename_expected)
+
     def test_from_json_string(self):
         """Test return of a list of the JSON string
         representation json_string"""
@@ -166,6 +180,14 @@ class TestSquare(unittest.TestCase):
         representation json_string None"""
         self.assertEqual(Square.from_json_string(None), [])
         self.assertIsNotNone(Square.from_json_string(None))
+
+    def test_from_json_string_emptyList(self):
+        """Test return of a list of the JSON string
+        representation json_string empty"""
+        list_input = []
+        json_list_input = Square.to_json_string(list_input)
+        self.assertEqual(Square.from_json_string(json_list_input), list_input)
+        self.assertIsInstance(Square.from_json_string(json_list_input), list)
 
     def test_create(self):
         """Test return of an instance with all attributes already set"""
