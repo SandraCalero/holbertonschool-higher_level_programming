@@ -137,6 +137,16 @@ class TestSquare(unittest.TestCase):
         self.assertIsInstance(dictio, dict)
         self.assertIsInstance(Base.to_json_string([dictio]), str)
 
+    def test_to_json_string_empty(self):
+        """Test to_json_string with empty list"""
+        self.assertEqual(Base.to_json_string([]), '[]')
+        self.assertIsInstance(Base.to_json_string([]), str)
+
+    def test_to_json_string_none(self):
+        """Test to_json_string with None"""
+        self.assertEqual(Base.to_json_string(None), '[]')
+        self.assertIsInstance(Base.to_json_string([]), str)
+
     def test_save_to_file(self):
         """Test write the JSON string representation of list_objs to a file"""
         json_content = '[{"id": 2, "size": 10, "x": 2, "y": 8}]'
