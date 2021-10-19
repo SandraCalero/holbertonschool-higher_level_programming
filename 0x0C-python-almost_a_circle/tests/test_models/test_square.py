@@ -144,6 +144,20 @@ class TestSquare(unittest.TestCase):
         self.assertEqual(output, json_content)
         self.assertEqual(file.name, filename_expected)
 
+    def test_from_json_string(self):
+        """Test return of a list of the JSON string
+        representation json_string"""
+        list_input = [{'id': 89, 'size': 10}, {'id': 7, 'size': 1}]
+        json_list_input = Square.to_json_string(list_input)
+        self.assertEqual(Square.from_json_string(json_list_input), list_input)
+        self.assertIsInstance(Square.from_json_string(json_list_input), list)
+
+    def test_from_json_stringNone(self):
+        """Test return of a list of the JSON string
+        representation json_string None"""
+        self.assertEqual(Square.from_json_string(None), [])
+        self.assertIsNotNone(Square.from_json_string(None))
+
     def test_pycodestyle(self):
         """Test pycodestyle."""
         style = pycodestyle.StyleGuide(quiet=True)

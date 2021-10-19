@@ -148,6 +148,23 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(output, json_content)
         self.assertEqual(file.name, filename_expected)
 
+    def test_from_json_string(self):
+        """Test return of a list of the JSON string
+        representation json_string"""
+        list_input = [{'id': 89, 'width': 10, 'height': 4},
+                      {'id': 7, 'width': 1, 'height': 7}]
+        json_list_input = Rectangle.to_json_string(list_input)
+        self.assertEqual(Rectangle.from_json_string(
+            json_list_input), list_input)
+        self.assertIsInstance(
+            Rectangle.from_json_string(json_list_input), list)
+
+    def test_from_json_stringNone(self):
+        """Test return of a list of the JSON string
+        representation json_string None"""
+        self.assertEqual(Rectangle.from_json_string(None), [])
+        self.assertIsNotNone(Rectangle.from_json_string(None))
+
     def test_pycodestyle(self):
         """Test pycodestyle."""
         style = pycodestyle.StyleGuide(quiet=True)
