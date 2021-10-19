@@ -200,6 +200,20 @@ class TestRectangle(unittest.TestCase):
         self.assertIsInstance(output, str)
         os.remove(path + "/" + filename_expected)
 
+    def test_save_to_file_empty(self):
+        """Test save_to_file methot if list_objs is empty"""
+        json_content = '[]'
+        filename_expected = "Rectangle.json"
+        Rectangle.save_to_file([])
+        path = os.getcwd()
+        self.assertTrue(os.path.isfile(path + "/" + filename_expected))
+        with open("Rectangle.json", "r") as file:
+            output = file.read()
+        self.assertEqual(output, json_content)
+        self.assertEqual(file.name, filename_expected)
+        self.assertIsInstance(output, str)
+        os.remove(path + "/" + filename_expected)
+
     def test_from_json_string(self):
         """Test return of a list of the JSON string
         representation json_string"""
