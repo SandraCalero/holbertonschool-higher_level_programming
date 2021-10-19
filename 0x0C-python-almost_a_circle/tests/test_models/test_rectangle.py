@@ -5,6 +5,7 @@ import unittest
 import io
 import unittest.mock
 import pycodestyle
+import os
 from models.rectangle import Rectangle
 from models.base import Base
 
@@ -146,6 +147,8 @@ class TestRectangle(unittest.TestCase):
         filename_expected = "Rectangle.json"
         r9 = Rectangle(10, 7, 2, 8, 2)
         Rectangle.save_to_file([r9])
+        path = os.getcwd()
+        self.assertTrue(os.path.isfile(path + "/" + filename_expected))
         with open("Rectangle.json", "r") as file:
             output = file.read()
         self.assertEqual(output, json_content)

@@ -5,6 +5,7 @@ import unittest
 import io
 import unittest.mock
 import pycodestyle
+import os
 from models.square import Square
 from models.base import Base
 
@@ -142,6 +143,8 @@ class TestSquare(unittest.TestCase):
         filename_expected = "Square.json"
         s9 = Square(10, 2, 8, 2)
         Square.save_to_file([s9])
+        path = os.getcwd()
+        self.assertTrue(os.path.isfile(path + "/" + filename_expected))
         with open("Square.json", "r") as file:
             output = file.read()
         self.assertEqual(output, json_content)
