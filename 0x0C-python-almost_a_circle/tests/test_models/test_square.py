@@ -63,6 +63,11 @@ class TestSquare(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "width must be > 0"):
             Square(-2)
 
+    def test_size_zero(self):
+        """Test error and message raised by providing a zero size"""
+        with self.assertRaisesRegex(ValueError, "width must be > 0"):
+            Square(0)
+
     def test_ValueError_size(self):
         """Test error raised by providing a negative size"""
         with self.assertRaises(ValueError):
