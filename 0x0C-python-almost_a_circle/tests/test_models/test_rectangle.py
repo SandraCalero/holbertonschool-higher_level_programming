@@ -170,6 +170,19 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(Rectangle.from_json_string(None), [])
         self.assertIsNotNone(Rectangle.from_json_string(None))
 
+    def test_create(self):
+        """Test return of an instance with all attributes already set"""
+        r10 = Rectangle(3, 5, 1, 2, 10)
+        r10_dictionary = r10.to_dictionary()
+        r11 = Rectangle.create(**r10_dictionary)
+        output = "[Rectangle] (10) 1/2 - 3/5\n[Rectangle] (10) 1/2 - 3/5\n"
+        with unittest.mock.patch('sys.stdout', new=io.StringIO()) as _out:
+            print(r10)
+            print(r11)
+            self.assertEqual(_out.getvalue(), output)
+        self.assertIsNot(r10, r11)
+        self.assertNotEqual(r10, r11)
+
     def test_pycodestyle(self):
         """Test pycodestyle."""
         style = pycodestyle.StyleGuide(quiet=True)

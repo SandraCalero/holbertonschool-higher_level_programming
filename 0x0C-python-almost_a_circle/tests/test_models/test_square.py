@@ -163,6 +163,19 @@ class TestSquare(unittest.TestCase):
         self.assertEqual(Square.from_json_string(None), [])
         self.assertIsNotNone(Square.from_json_string(None))
 
+    def test_create(self):
+        """Test return of an instance with all attributes already set"""
+        s10 = Square(3, 1, 2, 10)
+        s10_dictionary = s10.to_dictionary()
+        s11 = Square.create(**s10_dictionary)
+        output = "[Square] (10) 1/2 - 3\n[Square] (10) 1/2 - 3\n"
+        with unittest.mock.patch('sys.stdout', new=io.StringIO()) as _out:
+            print(s10)
+            print(s11)
+            self.assertEqual(_out.getvalue(), output)
+        self.assertIsNot(s10, s11)
+        self.assertNotEqual(s10, s11)
+
     def test_pycodestyle(self):
         """Test pycodestyle."""
         style = pycodestyle.StyleGuide(quiet=True)
