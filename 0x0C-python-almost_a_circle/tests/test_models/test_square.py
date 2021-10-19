@@ -112,12 +112,21 @@ class TestSquare(unittest.TestCase):
             s5.display()
             self.assertEqual(_out.getvalue(), output)
 
-    def test_update(self):
-        """Test assigns a key/value argument to attributes"""
+    def test_update_args(self):
+        """Test assigns a key/value argument to attributes(*args)"""
         output = "[Square] (10) 0/0 - 5\n"
         s6 = Square(5)
         with unittest.mock.patch('sys.stdout', new=io.StringIO()) as _out:
             s6.update(10)
+            print(s6)
+            self.assertEqual(_out.getvalue(), output)
+
+    def test_update_kwargs(self):
+        """Test assigns a key/value argument to attributes(**kwargs)"""
+        output = "[Square] (10) 0/1 - 7\n"
+        s6 = Square(5, 0, 0, 10)
+        with unittest.mock.patch('sys.stdout', new=io.StringIO()) as _out:
+            s6.update(size=7, y=1)
             print(s6)
             self.assertEqual(_out.getvalue(), output)
 

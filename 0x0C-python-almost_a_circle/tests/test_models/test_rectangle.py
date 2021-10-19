@@ -116,12 +116,21 @@ class TestRectangle(unittest.TestCase):
             r5.display()
             self.assertEqual(_out.getvalue(), output)
 
-    def test_update(self):
-        """Test assigns a key/value argument to attributes"""
+    def test_update_args(self):
+        """Test assigns a key/value argument to attributes(*args)"""
         output = "[Rectangle] (89) 10/10 - 10/10\n"
         r6 = Rectangle(10, 10, 10, 10)
         with unittest.mock.patch('sys.stdout', new=io.StringIO()) as _out:
             r6.update(89)
+            print(r6)
+            self.assertEqual(_out.getvalue(), output)
+
+    def test_update_kwargs(self):
+        """Test assigns a key/value argument to attributes(**kwargs)"""
+        output = "[Rectangle] (89) 10/10 - 10/1\n"
+        r6 = Rectangle(10, 10, 10, 10, 89)
+        with unittest.mock.patch('sys.stdout', new=io.StringIO()) as _out:
+            r6.update(height=1)
             print(r6)
             self.assertEqual(_out.getvalue(), output)
 
