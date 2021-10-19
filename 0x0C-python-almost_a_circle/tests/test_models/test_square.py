@@ -191,8 +191,8 @@ class TestSquare(unittest.TestCase):
         self.assertIsInstance(output, str)
         os.remove(path + "/" + filename_expected)
 
-    def test_save_to_file_None(self):
-        """Test save_to_file methot if list_objs is None"""
+    def test_save_to_file_empty(self):
+        """Test save_to_file methot if list_objs is empty"""
         json_content = '[]'
         filename_expected = "Square.json"
         Square.save_to_file([])
