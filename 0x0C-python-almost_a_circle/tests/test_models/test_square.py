@@ -151,6 +151,7 @@ class TestSquare(unittest.TestCase):
         self.assertEqual(file.name, filename_expected)
         self.assertIsInstance(s9, Square)
         self.assertIsInstance(output, str)
+        os.remove(path + "/" + filename_expected)
 
     def test_from_json_string(self):
         """Test return of a list of the JSON string
@@ -178,6 +179,25 @@ class TestSquare(unittest.TestCase):
             self.assertEqual(_out.getvalue(), output)
         self.assertIsNot(s10, s11)
         self.assertNotEqual(s10, s11)
+
+    def test_load_from_file(self):
+        """Test return of a list of instances"""
+        s12 = Square(10, 2, 8, 1)
+        s13 = Square(2, 0, 0, 2)
+        list_Squares_input = [s12, s13]
+        output = "[Square] (1) 2/8 - 10\n[Square] (2) 0/0 - 2\n"
+        Square.save_to_file(list_Squares_input)
+        list_Squares_output = Square.load_from_file()
+        with unittest.mock.patch('sys.stdout', new=io.StringIO()) as _out:
+            for rect in list_Squares_output:
+                print("{}".format(rect))
+            self.assertEqual(_out.getvalue(), output)
+        path = os.getcwd()
+        os.remove(path + "/" + "Square.json")
+
+    def test_load_from_file_FileNotFoundError(self):
+        """Test return of an empty list and FileNotFoundError"""
+        self.assertEqual(Square.load_from_file(), [])
 
     def test_pycodestyle(self):
         """Test pycodestyle."""
