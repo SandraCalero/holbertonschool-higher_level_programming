@@ -125,13 +125,16 @@ class TestSquare(unittest.TestCase):
         s7 = Square(10, 2, 1, 1)
         self.assertEqual(s7.to_dictionary(), {
                          'id': 1, 'size': 10, 'x': 2, 'y': 1})
+        self.assertIsInstance(s7.to_dictionary(), dict)
 
     def test_to_json_string(self):
         """Test return of a JSON string representation of list_dictionaries"""
         s8 = Square(10, 7, 8, 1)
-        dictionary = s8.to_dictionary()
+        dictio = s8.to_dictionary()
         self.assertEqual(Base.to_json_string(
-            [dictionary]), '[{"id": 1, "size": 10, "x": 7, "y": 8}]')
+            [dictio]), '[{"id": 1, "size": 10, "x": 7, "y": 8}]')
+        self.assertIsInstance(dictio, dict)
+        self.assertIsInstance(Base.to_json_string([dictio]), str)
 
     def test_save_to_file(self):
         """Test write the JSON string representation of list_objs to a file"""
@@ -143,6 +146,8 @@ class TestSquare(unittest.TestCase):
             output = file.read()
         self.assertEqual(output, json_content)
         self.assertEqual(file.name, filename_expected)
+        self.assertIsInstance(s9, Square)
+        self.assertIsInstance(output, str)
 
     def test_from_json_string(self):
         """Test return of a list of the JSON string

@@ -129,6 +129,7 @@ class TestRectangle(unittest.TestCase):
         r7 = Rectangle(10, 2, 1, 9, 15)
         self.assertEqual(r7.to_dictionary(), {
                          'id': 15, 'width': 10, 'height': 2, 'x': 1, 'y': 9})
+        self.assertIsInstance(r7.to_dictionary(), dict)
 
     def test_to_json_string(self):
         """Test return of a JSON string representation of list_dictionaries"""
@@ -136,6 +137,8 @@ class TestRectangle(unittest.TestCase):
         dictio = r8.to_dictionary()
         self.assertEqual(Base.to_json_string(
             [dictio]), '[{"id": 1, "width": 10, "height": 7, "x": 2, "y": 8}]')
+        self.assertIsInstance(dictio, dict)
+        self.assertIsInstance(Base.to_json_string([dictio]), str)
 
     def test_save_to_file(self):
         """Test write the JSON string representation of list_objs to a file"""
@@ -147,6 +150,8 @@ class TestRectangle(unittest.TestCase):
             output = file.read()
         self.assertEqual(output, json_content)
         self.assertEqual(file.name, filename_expected)
+        self.assertIsInstance(r9, Rectangle)
+        self.assertIsInstance(output, str)
 
     def test_from_json_string(self):
         """Test return of a list of the JSON string
