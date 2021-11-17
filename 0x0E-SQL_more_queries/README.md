@@ -78,6 +78,7 @@ id  name
 8   Thriller
 $
 ```
+![bc2575fee3303b731031](https://user-images.githubusercontent.com/85451781/142298366-3c0da21e-91db-4c00-a80f-497e8335a715.png)
 
 ## Tasks
 
