@@ -8,7 +8,7 @@ if (arrayLen <= 1) {
 } else {
   array.sort();
   for (let idx = arrayLen - 2; idx >= 0; idx--) {
-    if (array[idx] < array[idx + 1]) {
+    if (array[idx] !== array[idx + 1]) {
       console.log(parseInt(array[idx]));
       break;
     }
