@@ -6,6 +6,8 @@ const arrayLen = array.length;
 if (arrayLen <= 1) {
   console.log(0);
 } else {
-  array.sort();
-  console.log(parseInt(array[arrayLen - 2]));
+  array.sort(function (a, b) {
+    return b - a;
+  });
+  console.log(parseInt(array[1]));
 }
