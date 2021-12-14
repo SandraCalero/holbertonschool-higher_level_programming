@@ -4,7 +4,7 @@ const process = require('process');
 const array = process.argv.slice(2, process.argv.length);
 const arrayLen = array.length;
 if (arrayLen <= 1) {
-  console.log(0);
+  console.log('0');
 } else {
   array.sort();
   for (let idx = arrayLen - 2; idx >= 0; idx--) {
