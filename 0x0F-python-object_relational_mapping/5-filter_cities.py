@@ -15,7 +15,13 @@ if __name__ == '__main__':
         states.id = cities.state_id WHERE BINARY states.name = %s\
         ORDER BY cities.id", [argv[4]])
     query_rows = cur.fetchall()
+    idx = 0
     for row in query_rows:
-        print(row)
+        if idx == 0:
+            print(row[0], end='')
+            idx += 1
+        else:
+            print(', {}'.format(row[0]), end='')
+    print()
     cur.close()
     conn.close()
