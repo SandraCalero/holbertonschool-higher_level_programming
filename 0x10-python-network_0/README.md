@@ -32,11 +32,11 @@ For this proyect: Image = holbertonschool/299
 
 - **Execute the following commands:**
 
-  1. sudo docker pull <image>
-  2. sudo docker run <image>
+  1. sudo docker pull \<image>
+  2. sudo docker run -dp \<PORT:PORT> \<image>
   3. sudo docker ps
-  4. sudo docker exec -it <id> sh
-  5. curl -sI <IP:PORT>
+  4. sudo docker exec -it \<id> sh
+  5. curl -sI \<IP:PORT>
 
 ## Tasks
 
