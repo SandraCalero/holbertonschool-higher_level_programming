@@ -336,3 +336,12 @@ The following projects are performed here:
 - How to make HTTP POST/PUT/etc. request
 - How to fetch JSON resources
 - How to manipulate data from an external service
+
+## 0x14. JavaScript - Web scraping
+
+### General
+
+- Why JavaScript programming is amazing
+- How to manipulate JSON data
+- How to use request and fetch API
+- How to read and write a file using fs module
