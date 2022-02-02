@@ -9,12 +9,14 @@ request(endpoint, function (error, body) {
   } else {
     const movies = JSON.parse(body.body);
     const results = movies.results;
-    const WedgeAntillesUrl = 'https://swapi-api.hbtn.io/api/people/18/';
+    const WedgeAntillesID = '18';
     let numberOfMovies = 0;
-    let item;
-    for (item of results) {
-      if (item.characters.includes(WedgeAntillesUrl)) {
-        numberOfMovies++;
+    for (const film in results) {
+      const characters = results[film].characters;
+      for (const characterID in characters) {
+        if (characters[characterID].includes(WedgeAntillesID)) {
+          numberOfMovies++;
+        }
       }
     }
     console.log(numberOfMovies);
